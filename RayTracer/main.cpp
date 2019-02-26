@@ -22,8 +22,9 @@ int main() {
 	float exposure = 1.0f;
 	Perspective pv = Perspective(eye, lookAt, up, exposure);
 
+	DiffuseShader ds = DiffuseShader(1.0f, 1.0f, magenta);
 	std::vector<GeometricObject *> objects = std::vector<GeometricObject *>();
-	Sphere s = Sphere(Vector3(0.0f, 0.0f, -15.0f), 10.0f, magenta);
+	Sphere s = Sphere(Vector3(0.0f, 0.0f, -15.0f), 10.0f, &ds);
 	objects.push_back(&s);
 
 	std::vector<Light *> lights = std::vector<Light *>();

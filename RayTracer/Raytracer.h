@@ -2,8 +2,8 @@
 
 #include "CImg.h"
 #include "Sphere.h"
-#include "Light.h"
 #include "Perspective.h"
+#include "DiffuseShader.h"
 
 using namespace cimg_library;
 

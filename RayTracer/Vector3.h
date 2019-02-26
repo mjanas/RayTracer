@@ -32,6 +32,7 @@ public:
 	Vector3 const & operator*=(const float scale);
 	Vector3 const & operator/=(const float scale);
 
+	float length();
 	Vector3 normalize();
 
 	float x, y, z;

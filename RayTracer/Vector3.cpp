@@ -117,6 +117,11 @@ Vector3 const & Vector3::operator/=(const float scale) {
 }
 
 
+float Vector3::length() {
+	return sqrt((x * x) + (y * y) + (z * z));
+}
+
+
 Vector3 Vector3::normalize() {
 	float length = sqrt((x * x) + (y * y) + (z * z));
 	return Vector3(x / length, y / length, z / length);

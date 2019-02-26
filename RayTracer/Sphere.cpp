@@ -1,21 +1,16 @@
 #include "Sphere.h"
 
 
-Sphere::Sphere() {
-	center = Vector3();
-	radius = 1.0f;
-	surface_color = RGBColor();
-}
-
-
-Sphere::Sphere(Vector3 _center, float _radius, RGBColor _color) {
+Sphere::Sphere(Vector3 _center, float _radius, Material * _material) {
 	center = _center;
 	radius = _radius;
-	surface_color = _color;
+	material = _material;
 }
 
 
-Sphere::~Sphere() { }
+Sphere::~Sphere() { 
+	material = NULL;
+}
 
 
 bool solveQuadratic(const float &a, const float &b, const float &c, float &x0, float &x1) {
@@ -58,7 +53,6 @@ Vector3 Sphere::normal(Vector3 &hit_point) const {
 	return (hit_point - center) / radius;
 }
 
-
-RGBColor Sphere::surfaceColor() const {
-	return surface_color;
+Material * Sphere::getMaterial() {
+	return material;
 }

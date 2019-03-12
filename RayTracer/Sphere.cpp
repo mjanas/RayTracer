@@ -28,7 +28,7 @@ bool solveQuadratic(const float &a, const float &b, const float &c, float &x0, f
 }
 
 
-bool Sphere::intersect(const Ray &ray, float &t_near, float &t_far) const {
+bool Sphere::intersect(const Ray &ray, float &t_near, float &t_far) {
 	float t0, t1;
 	Vector3 L = ray.origin - center;
 	float a = ray.direction * ray.direction;
@@ -49,7 +49,7 @@ bool Sphere::intersect(const Ray &ray, float &t_near, float &t_far) const {
 }
 
 
-Vector3 Sphere::normal(Vector3 &hit_point) const {
+Vector3 Sphere::getNormal(Vector3 &hit_point) const {
 	return (hit_point - center) / radius;
 }
 

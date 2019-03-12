@@ -2,8 +2,12 @@
 
 #include "CImg.h"
 #include "Sphere.h"
+#include "Plane.h"
+#include "Triangle.h"
+#include "Mesh.h"
 #include "Perspective.h"
 #include "DiffuseShader.h"
+#include "SpecularShader.h"
 
 using namespace cimg_library;
 

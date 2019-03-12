@@ -38,12 +38,13 @@ RGBColor Raytracer::castRay(const Ray &ray, std::vector<GeometricObject *> &obje
 	}
 
 	float t_near, t_far;
-	float min = INFINITY;
 	for (unsigned int i = 0; i < objects.size(); i++) {
 		if (objects[i]->intersect(ray, t_near, t_far)) {
 			Vector3 hit_point = ray.origin + ray.direction * t_near;
-			Vector3 normal = objects[i]->normal(hit_point);
-			color = objects[i]->getMaterial()->surfaceColor(hit_point, normal, lights);
+			Vector3 normal = objects[i]->getNormal(hit_point);
+			normal = (normal * ray.direction > 0) ? -normal : normal;
+			Vector3 dir = ray.direction;
+			color = objects[i]->getMaterial()->surfaceColor(hit_point, normal, dir, lights);
 			break;
 		}
 	}
@@ -61,7 +62,7 @@ void Raytracer::render(Perspective &p, std::vector<GeometricObject *> &objects, 
 			float y = pixelSize * (r - verticalResolution / 2.0f + 0.5f);
 			float distance = 100.0f;
 
-			Vector3 dir = ((p.u * -x) + (p.v * y) - (p.w * distance)).normalize();
+			Vector3 dir = ((p.u * y) + (p.v * x) - (p.w * distance)).normalize();
 			Ray ray = Ray(p.eye, dir);
 
 			RGBColor floatColor = castRay(ray, objects, lights, 0);

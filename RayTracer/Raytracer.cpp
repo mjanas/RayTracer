@@ -89,7 +89,11 @@ void Raytracer::render(Perspective &p, std::vector<GeometricObject *> &objects, 
 	CImg<unsigned char> img(horizontalResolution, verticalResolution, 1, 3);
 	img.fill(0);
 	unsigned char finalColor[] = { 0, 0, 0 };
+
+	#pragma omp parallel for num_threads(verticalResolution)
 	for (int r = 0; r < verticalResolution; r++) {
+
+		#pragma omp parallel for num_threads(horizontalResolution)
 		for (int c = 0; c < horizontalResolution; c++) {
 			float x = pixelSize * (c - horizontalResolution / 2.0f + 0.5f);
 			float y = pixelSize * (r - verticalResolution / 2.0f + 0.5f);

@@ -8,9 +8,12 @@ This raytracer is built using Visual Studio 2017 and C++. Based on a raytracer I
 ## Features
 ### Geometry
 - Spheres
+- Planes
+- Triangles
 
 ### Shading
 - Diffuse shading
+- Specular shading
 
 ### Lights
 - Point lights

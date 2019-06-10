@@ -61,42 +61,14 @@ bool Mesh::isShadowed() {
 	return shadowed;
 }
 
+
 bool Mesh::isReflective() {
 	return reflective;
 }
 
+
 bool Mesh::isRefractive() {
 	return refractive;
-}
-
-
-void Mesh::computeBoundingBox() {
-	float x_min = INFINITY;
-	float y_min = INFINITY;
-	float z_min = INFINITY;
-	float x_max = -INFINITY;
-	float y_max = -INFINITY;
-	float z_max = -INFINITY;
-
-	for (size_t i = 0; i < triangleCount; i++) {
-		float minX = threeMin(triangles[i]->a.x, triangles[i]->b.x, triangles[i]->c.x);
-		float minY = threeMin(triangles[i]->a.y, triangles[i]->b.y, triangles[i]->c.y);
-		float minZ = threeMin(triangles[i]->a.z, triangles[i]->b.z, triangles[i]->c.z);
-
-		float maxX = threeMax(triangles[i]->a.x, triangles[i]->b.x, triangles[i]->c.x);
-		float maxY = threeMax(triangles[i]->a.y, triangles[i]->b.y, triangles[i]->c.y);
-		float maxZ = threeMax(triangles[i]->a.z, triangles[i]->b.z, triangles[i]->c.z);
-
-		x_min = (x_min < minX) ? x_min : minX;
-		y_min = (y_min < minY) ? y_min : minY;
-		z_min = (z_min < minZ) ? z_min : minZ;
-
-		x_max = (x_max > maxX) ? x_max : maxX;
-		y_max = (y_max > maxY) ? y_max : maxY;
-		z_max = (z_max > maxZ) ? z_max : maxZ;
-	}
-
-	bbox = BoundingBox(Vector3(x_min, y_min, z_min), Vector3(x_max, y_max, z_max));
 }
 
 

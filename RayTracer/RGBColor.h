@@ -1,5 +1,6 @@
 #pragma once
 
+
 class RGBColor {
 public:
 	float red, green, blue;

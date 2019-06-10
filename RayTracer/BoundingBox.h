@@ -2,6 +2,7 @@
 
 #include "Ray.h"
 
+
 class BoundingBox {
 public:
 	Vector3 min;

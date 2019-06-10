@@ -3,17 +3,14 @@
 #include "Triangle.h"
 #include "BoundingBox.h"
 
-class Mesh : public GeometricObject {
-public:
-	std::vector<Triangle *> triangles;
-	size_t vertexCount, triangleCount;
-	BoundingBox bbox;
-	Triangle * intersectedTriangle;
-	Material * material;
-	bool shadowed, reflective, refractive;
 
-	Mesh(Material * m);
-	~Mesh();
+class TriangleMesh : public GeometricObject {
+public:
+	size_t vertexCount, triangleCount;
+	Triangle * intersectedTriangle;
+
+	TriangleMesh(Material * m);
+	~TriangleMesh();
 
 	bool intersect(const Ray &ray, float &t_near, float &t_far);
 	Vector3 getNormal(Vector3 &hit_point) const;
@@ -26,6 +23,10 @@ public:
 	bool loadObj(const char * filename);
 
 private:
+	bool shadowed, reflective, refractive;
+	std::vector<Triangle *> triangles;
+	BoundingBox bbox;
+	Material * material;
 	void computeBoundingBox();
 };
 

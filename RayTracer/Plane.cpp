@@ -22,6 +22,7 @@ Plane::~Plane() {
 	material = NULL;
 }
 
+
 bool Plane::intersect(const Ray &ray, float &t_near, float &t_far) {
 	float denom = normal * ray.direction;
 	if (fabs(denom) > 0.0001f) {
@@ -34,21 +35,26 @@ bool Plane::intersect(const Ray &ray, float &t_near, float &t_far) {
 	return false;
 }
 
+
 Vector3 Plane::getNormal(Vector3 &hit_point) const {
 	return normal;
 }
+
 
 Material * Plane::getMaterial() {
 	return material;
 }
 
+
 bool Plane::isShadowed() {
 	return shadowed;
 }
 
+
 bool Plane::isReflective() {
 	return reflective;
 }
+
 
 bool Plane::isRefractive() {
 	return refractive;

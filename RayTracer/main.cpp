@@ -14,12 +14,12 @@ bool drawOpenBox = true;
 
 int main() {
 	// Set up display
-	int horizontalResolution = 256;
-	int verticalResolution = 256;
+	int horizontalResolution = 128;
+	int verticalResolution = 128;
 	float pixelSize = 1.0f;
 
 	// Set up camera
-	Vector3 eye = Vector3(0.0f, 0.0f, 55.0f);
+	Vector3 eye = Vector3(0.0f, 0.0f, 5.0f);
 	Vector3 lookAt = Vector3(0.0f, 0.0f, -1.0f);
 	Vector3 up = Vector3(0.0f, 1.0f, 0.0f);
 	float exposure = 1.0f;
@@ -31,14 +31,15 @@ int main() {
 	// Objects to raytrace
 	SpecularShader ss1 = SpecularShader(0.1f, 1.0f, 1.0f, 64.0f, blue);
 	SpecularShader ss2 = SpecularShader(0.1f, 1.0f, 1.0f, 64.0f, red);
+	DiffuseShader ds1 = DiffuseShader(0.1f, 1.0f, green);
 
-	//Mesh m = Mesh(&ds1);
-	//bool result = m.loadObj("openbox.obj");
-	//objects.push_back(&m);
-	//printf("Load OBJ successful: %d\n", result);
+	TriangleMesh m = TriangleMesh(&ss1);
+	bool result = m.loadObj("teapot.obj");
+	objects.push_back(&m);
+	printf("Load OBJ as mesh successful: %d\n", result);
 
-	DiffuseShader ds1 = DiffuseShader(0.1f, 0.9f, grey);
 
+	/**
 	Vector3 pt1 = Vector3(-30.0f, -30.0f, -30.0f);
 	Vector3 pt2 = Vector3(-30.0f, 30.0f, -30.0f);
 	Vector3 pt3 = Vector3(-30.0f, 30.0f, 30.0f);
@@ -68,18 +69,18 @@ int main() {
 	objects.push_back(&t5);
 	objects.push_back(&t6);
 	objects.push_back(&t7);
-	objects.push_back(&t8);
+	objects.push_back(&t8); **/
 
-	Sphere s1 = Sphere(Vector3(-5.0f, 0.0f, 10.0f), 10.0f, &ss1, false, true, false);
-	objects.push_back(&s1);
+	//Sphere s1 = Sphere(Vector3(-11.0f, 0.0f, 10.0f), 10.0f, &ss1, false, true, false);
+	//objects.push_back(&s1);
 
-	Sphere s2 = Sphere(Vector3(0.0f, -5.0f, 20.0f), 5.0f, &ss2, false, false, false);
-	objects.push_back(&s2);
+	//Sphere s2 = Sphere(Vector3(11.0f, 0.0f, 10.0f), 10.0f, &ss2, false, false, false);
+	//objects.push_back(&s2);
 
 
 	// Add lights to the scene
 	std::vector<Light *> lights = std::vector<Light *>();
-	Light l = Light(Vector3(0.0f, -2.0f, 35.0f), white);
+	Light l = Light(Vector3(0.0f, 0.0f, 5.0f), white);
 	lights.push_back(&l);
 
 	// Create raytracer and render

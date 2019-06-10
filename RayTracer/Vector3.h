@@ -2,8 +2,11 @@
 
 #include "Constants.h"
 
+
 class Vector3 {
 public:
+	float x, y, z;
+
 	Vector3();
 	Vector3(float _x, float _y, float _z);
 	~Vector3();
@@ -34,7 +37,4 @@ public:
 
 	float length();
 	Vector3 normalize();
-
-	float x, y, z;
 };
-

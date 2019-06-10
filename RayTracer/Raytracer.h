@@ -4,16 +4,16 @@
 #include "Sphere.h"
 #include "Plane.h"
 #include "Triangle.h"
-#include "Mesh.h"
+#include "TriangleMesh.h"
 #include "Perspective.h"
 #include "DiffuseShader.h"
 #include "SpecularShader.h"
 
 using namespace cimg_library;
 
+
 class Raytracer {
 public:
-
 	int horizontalResolution, verticalResolution;
 	float pixelSize;
 

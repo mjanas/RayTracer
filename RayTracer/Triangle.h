@@ -2,14 +2,12 @@
 
 #include "GeometricObject.h"
 
+
 class Triangle : public GeometricObject {
 public:
 	Vector3 a, b, c;
 	Vector3 normal;
-	Material * material;
-	bool shadowed, reflective, refractive;
-
-
+	
 	Triangle(Vector3 _a, Vector3 _b, Vector3 _c, Material * m);
 	Triangle(Vector3 _a, Vector3 _b, Vector3 _c, Material * m, bool sh, bool refl, bool refr);
 	~Triangle();
@@ -23,5 +21,7 @@ public:
 
 private:
 	void computeNormal();
+	Material * material;
+	bool shadowed, reflective, refractive;
 };
 

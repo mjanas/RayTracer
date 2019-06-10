@@ -3,9 +3,9 @@
 #include "Ray.h"
 #include "RGBColor.h"
 
+
 class Light {
 public:
-
 	Vector3 origin;
 	RGBColor color;
 	float intensity;

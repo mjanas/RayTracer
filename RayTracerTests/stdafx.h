@@ -17,4 +17,4 @@
 #include "../Raytracer/Sphere.h"
 #include "../Raytracer/Triangle.h"
 #include "../Raytracer/RGBColor.h"
-#include "../Raytracer/Mesh.h"
+#include "../Raytracer/TriangleMesh.h"

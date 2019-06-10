@@ -2,6 +2,7 @@
 
 #include "Light.h"
 
+
 class Material {
 public:
 	Material();

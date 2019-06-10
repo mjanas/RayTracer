@@ -4,14 +4,14 @@
 Light::Light() {
 	origin = Vector3();
 	color = RGBColor();
-	intensity = 50.0f;
+	intensity = 10.0f;
 }
 
 
 Light::Light(Vector3 o, RGBColor c) {
 	origin = o;
 	color = c;
-	intensity = 50.0f;
+	intensity = 10.0f;
 }
 
 

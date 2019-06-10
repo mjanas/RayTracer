@@ -3,9 +3,9 @@
 #include "Ray.h"
 #include "Material.h"
 
+
 class GeometricObject {
 public:
-
 	GeometricObject();
 	~GeometricObject();
 

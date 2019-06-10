@@ -29,7 +29,7 @@ RGBColor SpecularShader::surfaceColor(Vector3 &hit_point, Vector3 &normal, std::
 
 RGBColor SpecularShader::surfaceColor(Vector3 &hit_point, Vector3 &normal, Vector3 &view, std::vector<Light *> lights) const {
 	Vector3 normalized_normal = normal.normalize();
-	Vector3 dir = (-view).normalize();
+	Vector3 dir = view.normalize();
 
 	RGBColor output;
 	float avg_red = 0.0f;

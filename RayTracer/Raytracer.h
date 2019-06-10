@@ -24,4 +24,6 @@ public:
 
 private:
 	RGBColor castRay(const Ray &ray, std::vector<GeometricObject *> &objects, std::vector<Light *> &lights, int depth);
+	bool objectIsInShadow(const Ray &shadowRay, GeometricObject * currentObject, std::vector<GeometricObject *> &objects);
+	Vector3 reflect(const Vector3 &incident_dir, const Vector3 &normal_dir);
 };

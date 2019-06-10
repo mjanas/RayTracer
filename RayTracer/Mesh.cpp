@@ -6,7 +6,10 @@ Mesh::Mesh(Material * m) {
 	vertexCount = 0;
 	triangleCount = 0;
 	material = m;
-	intersectedTriangle;
+	intersectedTriangle = NULL;
+	shadowed = false;
+	reflective = false;
+	refractive = false;
 }
 
 
@@ -51,6 +54,19 @@ Material * Mesh::getMaterial() {
 
 BoundingBox Mesh::getBoundingBox() const {
 	return bbox;
+}
+
+
+bool Mesh::isShadowed() {
+	return shadowed;
+}
+
+bool Mesh::isReflective() {
+	return reflective;
+}
+
+bool Mesh::isRefractive() {
+	return refractive;
 }
 
 
@@ -112,6 +128,9 @@ bool Mesh::loadObj(const char * filename) {
 			vertexIndices.push_back(vertexIndex[1]);
 			vertexIndices.push_back(vertexIndex[2]);
 
+		}
+		else if (strcmp(lineHeader, "#") == 0) {
+			printf("Comment\n");
 		}
 		else {
 			printf("ERROR: Unrecognized header '%s'\n", lineHeader);

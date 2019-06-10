@@ -8,8 +8,33 @@ Sphere::Sphere(Vector3 _center, float _radius, Material * _material) {
 }
 
 
+Sphere::Sphere(Vector3 _center, float _radius, Material * _material, bool _shadowed, bool _reflective, bool _refractive) {
+	center = _center;
+	radius = _radius;
+	material = _material;
+	shadowed = _shadowed;
+	reflective = _reflective;
+	refractive = _refractive;
+}
+
+
 Sphere::~Sphere() { 
 	material = NULL;
+}
+
+
+bool Sphere::isShadowed() {
+	return shadowed;
+}
+
+
+bool Sphere::isReflective() {
+	return reflective;
+}
+
+
+bool Sphere::isRefractive() {
+	return refractive;
 }
 
 

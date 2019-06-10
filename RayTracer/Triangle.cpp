@@ -10,6 +10,18 @@ Triangle::Triangle(Vector3 _a, Vector3 _b, Vector3 _c, Material * m) {
 }
 
 
+Triangle::Triangle(Vector3 _a, Vector3 _b, Vector3 _c, Material * m, bool sh, bool refl, bool refr) {
+	a = _a;
+	b = _b;
+	c = _c;
+	material = m;
+	computeNormal();
+	shadowed = sh;
+	reflective = refl;
+	refractive = refr;
+}
+
+
 Triangle::~Triangle() {
 	material = NULL;
 }
@@ -20,6 +32,24 @@ void Triangle::computeNormal() {
 }
 
 
+bool Triangle::isShadowed() {
+	return shadowed;
+}
+
+
+bool Triangle::isReflective() {
+	return reflective;
+}
+
+
+bool Triangle::isRefractive() {
+	return refractive;
+}
+
+
+/**
+ * Source: Kevin Suffern's 'Ray Tracing from the Ground Up'
+ */
 bool Triangle::intersect(const Ray &ray, float &t_near, float &t_far) {
 	Vector3 ab = a - b;
 	Vector3 ac = a - c;

@@ -4,7 +4,6 @@
 
 class Perspective {
 public:
-
 	Vector3 eye;
 	Vector3 lookAt;
 	Vector3 up;

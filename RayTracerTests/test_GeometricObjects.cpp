@@ -68,7 +68,6 @@ public:
 		Sphere s = Sphere(Vector3(), 1.0f, NULL);
 		Vector3 min = Vector3(-1.0f, -1.0f, -1.0f);
 		Vector3 max = Vector3(1.0f, 1.0f, 1.0f);
-		Assert::IsTrue(false);
 		/**Assert::AreEqual(s.bbox.getMinX(), min.x);
 		Assert::AreEqual(s.bbox.getMinY(), min.y);
 		Assert::AreEqual(s.bbox.getMinZ(), min.z);

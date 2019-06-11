@@ -39,6 +39,47 @@ float * Matrix4::operator[](size_t i) {
 }
 
 
+Matrix4 Matrix4::createTranslationMatrix(float dx, float dy, float dz) const {
+	return Matrix4(1.0f, 0.0f, 0.0f, dx,
+		0.0f, 1.0f, 0.0f, dy,
+		0.0f, 0.0f, 1.0f, dz,
+		0.0f, 0.0f, 0.0f, 1.0f);
+}
+
+
+Matrix4 Matrix4::createScaleMatrix(float a, float b, float c) const {
+	return Matrix4(a, 0.0f, 0.0f, 0.0f,
+		0.0f, b, 0.0f, 0.0f,
+		0.0f, 0.0f, c, 0.0f,
+		0.0f, 0.0f, 0.0f, 1.0f);
+}
+
+
+Matrix4 Matrix4::createRotationAboutX(float theta) const {
+	return Matrix4(1.0f, 0.0f, 0.0f, 0.0f,
+		0.0f, cos(theta), -sin(theta), 0.0f,
+		0.0f, sin(theta), cos(theta), 0.0f,
+		0.0f, 0.0f, 0.0f, 1.0f);
+}
+
+
+Matrix4 Matrix4::createRotationAboutY(float theta) const {
+	return Matrix4(cos(theta), 0.0f, sin(theta), 0.0f,
+		0.0f, 1.0f, 0.0f, 0.0f,
+		-sin(theta), 0.0f, cos(theta), 0.0f,
+		0.0f, 0.0f, 0.0f, 1.0f);
+
+}
+
+
+Matrix4 Matrix4::createRotationAboutZ(float theta) const {
+	return Matrix4(cos(theta), -sin(theta), 0.0f, 0.0f,
+		sin(theta), cos(theta), 0.0f, 0.0f,
+		0.0f, 0.0f, 1.0f, 0.0f,
+		0.0f, 0.0f, 0.0f, 1.0f);
+}
+
+
 /**
  * Source: https://www.scratchapixel.com/code.php?id=28&origin=/lessons/3d-basic-rendering/introduction-polygon-mesh&src=1
  */

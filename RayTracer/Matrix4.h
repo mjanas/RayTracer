@@ -21,6 +21,12 @@ public:
 	float * operator[](size_t i);
 	Matrix4 operator*(const Matrix4 &rhs) const;
 
+	Matrix4 createTranslationMatrix(float dx, float dy, float dz) const;
+	Matrix4 createScaleMatrix(float a, float b, float c) const;
+	Matrix4 createRotationAboutX(float theta) const;
+	Matrix4 createRotationAboutY(float theta) const;
+	Matrix4 createRotationAboutZ(float theta) const;
+
 	Matrix4 & transpose();
 	Matrix4 transposed() const;
 	void multVecMatrix(const Vector3 &src, Vector3 &dst) const;

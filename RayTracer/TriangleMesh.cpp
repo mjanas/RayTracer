@@ -5,6 +5,9 @@ TriangleMesh::TriangleMesh(Material * m) {
 	material = m;
 	triangles = std::vector<Triangle *>();
 	intersectedTriangle = NULL;
+	shadowed = false;
+	reflective = false;
+	refractive = false;
 }
 
 
@@ -77,6 +80,25 @@ void TriangleMesh::computeBoundingBox() {
 }
 
 
+void TriangleMesh::applyTransformation(Matrix4 &matrix) {
+	for (int i = 0; i < triangles.size(); i++) {
+		Vector3 a = triangles[i]->a;
+		Vector3 b = triangles[i]->b;
+		Vector3 c = triangles[i]->c;
+
+		Vector3 new_a, new_b, new_c;
+
+		matrix.multVecMatrix(a, new_a);
+		matrix.multVecMatrix(b, new_b);
+		matrix.multVecMatrix(c, new_c);
+
+		triangles[i]->a = new_a;
+		triangles[i]->b = new_b;
+		triangles[i]->c = new_c;
+	}
+}
+
+
 bool TriangleMesh::intersect(const Ray &ray, float &t_near, float &t_far) {
 	float best_t_near = INFINITY;
 	intersectedTriangle = NULL;
@@ -86,7 +108,7 @@ bool TriangleMesh::intersect(const Ray &ray, float &t_near, float &t_far) {
 	}
 
 	for (unsigned int i = 0; i < triangles.size(); i++) {
-		if (triangles[i]->intersect(ray, t_near, t_far) && t_near < best_t_near) {
+		if (triangles[i]->intersect(ray, t_near, t_far) && (t_near < best_t_near)) {
 			best_t_near = t_near;
 			intersectedTriangle = triangles[i];
 		}

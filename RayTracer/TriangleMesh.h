@@ -2,6 +2,7 @@
 
 #include "Triangle.h"
 #include "BoundingBox.h"
+#include "Matrix4.h"
 
 
 class TriangleMesh : public GeometricObject {
@@ -21,6 +22,8 @@ public:
 	bool isRefractive();
 
 	bool loadObj(const char * filename);
+
+	void applyTransformation(Matrix4 &matrix);
 
 private:
 	bool shadowed, reflective, refractive;
